@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Visa Expiration Notification',
-    'version': '16.0.1',
+    'version': '16.0.2',
     'sequence': 1,
     'website': 'aravindu28@gmail.com',
     'category': 'Extra Tools',
