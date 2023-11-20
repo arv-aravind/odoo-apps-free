@@ -7,8 +7,8 @@ class PurchaseOrderLine(models.Model):
     _inherit = "purchase.order.line"
 
     discount_amount = fields.Float(string="Discount(AMT)", digits="Product Price", default=0.000)
-
-    discount = fields.Char(string='Discount(%)', default=0.000)
+    discount_float = fields.Float(string='Discount(%)', default=0.000000000000)
+    discount = fields.Char(string='Discount', default=0.000)
 
     @api.depends('product_qty', 'price_unit', 'taxes_id','discount_amount')
     def _compute_amount(self):
@@ -22,6 +22,11 @@ class PurchaseOrderLine(models.Model):
                 'price_tax': amount_tax,
                 'price_total': amount_untaxed + amount_tax,
             })
+
+    @api.onchange("discount_float")
+    def _onchange_discount_float(self):
+        for line in self:
+            self.discount = line.discount_float
 
     @api.onchange("discount")
     def _onchange_discount_percentage(self):
@@ -48,9 +53,11 @@ class PurchaseOrderLine(models.Model):
                         (self.product_qty * self.price_unit) - self.discount_amount)) / (
                                    self.product_qty * self.price_unit) * 100 or 0.0
                 line.update({"discount": discount})
+                line.update({"discount_float": discount})
             if line.discount_amount == 0:
                 discount = 0.0
                 line.update({"discount": discount})
+                line.update({"discount_float": discount})
             line._compute_amount()
 
     def _convert_to_tax_base_line_dict(self):

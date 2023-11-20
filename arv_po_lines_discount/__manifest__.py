@@ -5,7 +5,7 @@
     'description': """If you add a value by percentage it will automatically calculate the fixed amount for it, and vice versa in purchase order line.""",
     'author': "Aravind",
     'website': 'aravindu28@gmail.com',
-    'version': '16.0.1',
+    'version': '16.0.2',
     'sequence': 1,
     'license': "AGPL-3",
     'category': "Purchase Management",
