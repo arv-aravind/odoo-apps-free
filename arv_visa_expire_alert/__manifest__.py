@@ -3,7 +3,7 @@
     'name': 'Visa Expiration Notification',
     'version': '16.0.2',
     'sequence': 1,
-    'website': 'aravindu28@gmail.com',
+    'website': 'aravinds.odoo.com',
     'category': 'Extra Tools',
     'summary': """This module serves the purpose of notifying selected Users regarding visa expiration.""",
     'description': """ This module serves the purpose of notifying selected Users regarding visa expiration. """,
