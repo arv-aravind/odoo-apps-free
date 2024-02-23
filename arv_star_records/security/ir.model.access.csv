@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_arv_starred_records,access_arv_starred_records,arv_star_records.model_arv_starred_records,,1,1,1,1
+
