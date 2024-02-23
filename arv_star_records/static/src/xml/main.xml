@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-name="ArvStarredRecordsSystrayDropdown">
+        <div class="priority-groups-div">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+            <div class="SystrayMenuContainer">
+                <div class="o_MessagingMenu dropdown">
+                    <div class="o-dropdown dropdown o_debug_manager o-dropdown--no-caret">
+                        <a draggable='true'
+                           class="arv-dragable-star o_MessagingMenu_toggler dropdown-toggle o-no-caret o-dropdown--narrow"
+                           title="Star Records" role="button" aria-haspopup="true" aria-expanded="">
+                            <i class="fa fa-star fa-lg"/>
+                        </a>
+                    </div>
+                    <div id="star_systray_notif" class="o_MessagingMenu_dropdownMenu o-dropdown-menu"
+                         style="left: auto; right: 0; width:34rem; left: auto; right: 0; padding:0rem; margin-left:0; margin:0rem;">
+                        <div class="container"
+                             style=" padding-right: 0rem; padding-left:0rem; padding-top: 0%; margin:0;">
+                            <div class="systray_notification"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="arv-star-drop">
+                <i class="arv-starred-icon fa fa-star-o fa-lg"/>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="SystrayStarredRecordDetails">
+        <div class="container" style="padding-right:0px;padding-left:0px;">
+            <div class="secondary-main-div">
+                <div style="width:100%;">
+                    <h5 class="starred-rec-heading">Starred Records</h5>
+                </div>
+                <t t-if="records.length !== 0">
+                    <t t-foreach="records" t-as="rec">
+                        <table class="star-rec-table">
+                            <tr t-att-class="rec.key_exists">
+                                <td style="width:4rem;" title="Un-Star">
+                                    <div class="o_NotificationListItem_sidebar o_NotificationGroup_sidebar m-1">
+                                        <div class="o_NotificationGroup_sidebarItem list-star-div">
+                                            <h3>
+                                                <i style="color: #f3cc00;" t-att-data-key="rec.key_exists"
+                                                   class="arv-list-unstar fa fa-star fa-lg"/>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td title="View Record">
+                                    <a t-att-href="rec.url">
+                                        <div class="o_NotificationListItem_content o_NotificationGroup_content d-flex flex-column flex-grow-1 align-self-start m-2">
+                                            <h3 style="color:#495057;font-size:18px;">
+                                                <t t-esc="rec.name"/>
+                                            </h3>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td title="View Record">
+                                    <a t-att-href="rec.url">
+                                        <div class="o_NotificationListItem_content o_NotificationGroup_content d-flex flex-column flex-grow-1 align-self-start m-2">
+                                            <span class="star-rec-model">
+                                                <t t-esc="rec.model"/>
+                                            </span>
+                                            <div class="employee-info" style="display: flex;">
+                                                <span class="flex-grow-1"></span>
+                                                <span style="color: #adb5bd;">
+                                                    <t t-esc="rec.rec_id"/>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
+                </t>
+                <t t-else="">
+                    <div style="text-align:center;width:100%;padding:20px;">
+                        <b>No Starred Record Found</b>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>
